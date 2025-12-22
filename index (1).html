@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prince Soni - Homeopathy Student | Portfolio</title>
+    <style>
+        :root {
+            --color-primary: #2a8e91;
+            --color-primary-light: #32b8c6;
+            --color-primary-dark: #1a6e71;
+            --color-accent: #e68a4c;
+            --color-accent-light: #f4a876;
+            --color-text: #1a1a1a;
+            --color-text-light: #666;
+            --color-bg: #faf9f6;
+            --color-white: #ffffff;
+            --color-border: rgba(42, 142, 145, 0.15);
+            --color-success: #22c55e;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: var(--color-white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-emoji {
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-text);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--color-text);
+            margin: 5px 0;
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            text-align: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--color-text-light);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-image {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(42, 142, 145, 0.1), rgba(230, 138, 76, 0.1));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 2px solid var(--color-border);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 18px;
+        }
+
+        .hero-image::before {
+            content: '🏥';
+            position: absolute;
+            font-size: 5rem;
+            z-index: 1;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(42, 142, 145, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-primary);
+            color: var(--color-white);
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        .about {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+            background: var(--color-white);
+            border-radius: 15px;
+            margin: 3rem auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--color-primary);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .about-text p {
+            color: var(--color-text-light);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .about-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .about-list li {
+            padding: 0.5rem 0;
+            color: var(--color-text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .about-list li::before {
+            content: '✓';
+            color: var(--color-success);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, rgba(42, 142, 145, 0.1), rgba(230, 138, 76, 0.1));
+            border-radius: 15px;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--color-border);
+            font-size: 4rem;
+        }
+
+        /* Expertise Section */
+        .expertise {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 5rem 2rem;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .expertise-card {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid var(--color-border);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .expertise-card:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(42, 142, 145, 0.15);
+        }
+
+        .expertise-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .expertise-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .expertise-card p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Education Section */
+        .education {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 5rem 2rem;
+            background: var(--color-white);
+            border-radius: 15px;
+        }
+
+        .education-item {
+            padding: 2rem;
+            border-left: 4px solid var(--color-primary);
+            margin-bottom: 2rem;
+            background: rgba(42, 142, 145, 0.05);
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .education-item:hover {
+            box-shadow: 0 8px 20px rgba(42, 142, 145, 0.1);
+            transform: translateX(8px);
+        }
+
+        .education-item h3 {
+            color: var(--color-primary);
+            margin-bottom: 0.3rem;
+            font-size: 1.3rem;
+        }
+
+        .education-item .institution {
+            color: var(--color-accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item .year {
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Skills Section */
+        .skills {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 5rem 2rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-item {
+            background: var(--color-white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 2px solid var(--color-border);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .skill-item:hover {
+            border-color: var(--color-accent);
+            background: rgba(230, 138, 76, 0.05);
+        }
+
+        .skill-item p {
+            color: var(--color-text);
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            border-radius: 15px;
+            color: var(--color-white);
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-white);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .contact-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-text);
+            color: var(--color-white);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 5rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .footer-credit {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 3rem 1.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-image {
+                height: 250px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .expertise-icon {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-emoji">⚕️</span>
+                Prince Soni
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Prince Soni</h1>
+            <p class="subtitle">Homeopathy Student | Healthcare Enthusiast</p>
+            <p>Dedicated to mastering the principles of homeopathic medicine and providing holistic healthcare solutions. Currently pursuing homeopathy at Vikram University, Ujjain.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                <a href="#about" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-image"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Passionate Healthcare Professional</h2>
+                <p>I am a dedicated homeopathy student with a strong foundation in healthcare principles and holistic medicine. My journey in homeopathy is driven by a passion to understand and practice the principles of "like cures like" and promote natural healing.</p>
+                <p>With comprehensive knowledge of pharmacology, materia medica, and case-taking methodologies, I am committed to excellence in homeopathic practice.</p>
+                <ul class="about-list">
+                    <li>Specialized knowledge in Homeopathic Pharmacology</li>
+                    <li>Proficient in Case-Taking & Case Analysis</li>
+                    <li>Understanding of Materia Medica & Therapeutics</li>
+                    <li>Patient-Centered Approach to Care</li>
+                    <li>Continuous Learning & Professional Development</li>
+                </ul>
+            </div>
+            <div class="about-image">📚</div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise" class="expertise">
+        <h2 class="section-title">Areas of Expertise</h2>
+        <div class="expertise-grid">
+            <div class="expertise-card">
+                <div class="expertise-icon">🌿</div>
+                <h3>Homeopathic Remedies</h3>
+                <p>In-depth knowledge of homeopathic remedies and their applications in treating various health conditions.</p>
+            </div>
+            <div class="expertise-card">
+                <div class="expertise-icon">💊</div>
+                <h3>Materia Medica</h3>
+                <p>Comprehensive understanding of medicinal substances and their homeopathic properties and applications.</p>
+            </div>
+            <div class="expertise-card">
+                <div class="expertise-icon">📋</div>
+                <h3>Case Taking</h3>
+                <p>Expert case-taking methodologies to understand patient symptoms and select appropriate remedies.</p>
+            </div>
+            <div class="expertise-card">
+                <div class="expertise-icon">❤️</div>
+                <h3>Holistic Care</h3>
+                <p>Patient-centered approach focusing on treating the whole person rather than just symptoms.</p>
+            </div>
+            <div class="expertise-card">
+                <div class="expertise-icon">🔬</div>
+                <h3>Research</h3>
+                <p>Commitment to understanding evidence-based homeopathic research and clinical studies.</p>
+            </div>
+            <div class="expertise-card">
+                <div class="expertise-icon">👥</div>
+                <h3>Patient Communication</h3>
+                <p>Effective communication skills to explain treatments and build trust with patients.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <h2 class="section-title">Education</h2>
+        <div class="education-item">
+            <h3>Bachelor of Homeopathic Medicine & Surgery (BHMS)</h3>
+            <p class="institution">Vikram University, Ujjain</p>
+            <p class="year">Currently Pursuing | Enrolled in 2024</p>
+            <p>Comprehensive homeopathy curriculum covering homeopathic philosophy, principles, materia medica, case-taking, and clinical practice.</p>
+        </div>
+        <div class="education-item">
+            <h3>12th Grade / Senior Secondary</h3>
+            <p class="institution">Central Board of Secondary Education (CBSE)</p>
+            <p class="year">Completed in 2024</p>
+            <p>Foundation in science subjects with strong emphasis on chemistry, biology, and general knowledge.</p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <h2 class="section-title">Skills & Competencies</h2>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <p>🧪 Laboratory Analysis</p>
+            </div>
+            <div class="skill-item">
+                <p>📖 Materia Medica</p>
+            </div>
+            <div class="skill-item">
+                <p>💬 Patient Communication</p>
+            </div>
+            <div class="skill-item">
+                <p>📊 Case Analysis</p>
+            </div>
+            <div class="skill-item">
+                <p>🏥 Clinical Practice</p>
+            </div>
+            <div class="skill-item">
+                <p>📚 Research & Learning</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Get In Touch</h2>
+        <p>I'd love to hear from you! Reach out for any inquiries, collaborations, or to discuss homeopathic health solutions.</p>
+        <div class="contact-links">
+            <a href="mailto:prince@example.com" class="contact-link">
+                📧 Email
+            </a>
+            <a href="tel:+919999999999" class="contact-link">
+                📱 Phone
+            </a>
+            <a href="#" class="contact-link">
+                💼 LinkedIn
+            </a>
+            <a href="#" class="contact-link">
+                🔗 Other
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Prince Soni | Homeopathy Student</p>
+        <p>Vikram University, Ujjain | Madhya Pradesh, India</p>
+        <p class="footer-credit">Portfolio created by Prince Soni &bull; All Rights Reserved</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '60px';
+            navLinks.style.left = '0';
+            navLinks.style.right = '0';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.background = 'var(--color-white)';
+            navLinks.style.padding = '1rem';
+            navLinks.style.borderRadius = '0 0 10px 10px';
+            navLinks.style.boxShadow = '0 4px 10px rgba(0,0,0,0.1)';
+        });
+
+        // Scroll animation for elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.expertise-card, .education-item, .skill-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
